@@ -28,6 +28,7 @@ public class FileUploadController {
 	
 		try {
 			dbFileStorageService.storeFile(file,department);
+			System.out.println("tst");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
