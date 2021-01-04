@@ -10,5 +10,6 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
 	Teacher_Department save(Teacher_Department teacher_Department);
 
 	Iterable<Student> findAllByDepartmentDepartmentIgnoreCase(String dep);
+	Student findAllByEmailIgnoreCase(String email);
 
 	}

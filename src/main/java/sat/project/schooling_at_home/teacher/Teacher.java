@@ -27,6 +27,8 @@ public class Teacher {
 	@ManyToOne
 	@JoinColumn(name = "department")
 	private Teacher_Department department;
+	
+	private String email;
 
 	public Integer getId() {
 		return id;
@@ -66,6 +68,14 @@ public class Teacher {
 
 	public void setDepartment(Teacher_Department department) {
 		this.department = department;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

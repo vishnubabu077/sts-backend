@@ -13,6 +13,8 @@ public class TeacherModel {
 
 	private String last_name;
 	
+	private String email;
+	
 	private Teacher_Designation designation;
 
 	private Teacher_Department department;
@@ -55,6 +57,14 @@ public class TeacherModel {
 
 	public void setDepartment(Teacher_Department department) {
 		this.department = department;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
