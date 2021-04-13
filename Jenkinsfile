@@ -6,7 +6,7 @@ agent any
         
         stage('checkout'){
             steps{
-                git branch: '/*', url: 'https://github.com/vishnubabu077/sts-backend.git'
+               checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'cb8b16d6-fae1-4415-a843-8ba7322b3db6', url: 'https://github.com/vishnubabu077/sts-backend.git']]])
             }
         }
         stage('Build') {
