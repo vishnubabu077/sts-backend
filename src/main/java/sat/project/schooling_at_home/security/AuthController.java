@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.naming.AuthenticationException;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -45,7 +48,8 @@ public class AuthController {
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-
+		
+try {
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -62,6 +66,11 @@ public class AuthController {
 												 userDetails.getUsername(), 
 												 userDetails.getEmail(), 
 												 roles));
+}catch (org.springframework.security.core.AuthenticationException e) {
+	e.printStackTrace();
+	return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+	//response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: Unauthorized");
+}
 	}
 
 //	@PostMapping("/signup")
